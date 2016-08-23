@@ -256,7 +256,6 @@ prompt_agnoster_main() {
   prompt_context
   prompt_virtualenv
   prompt_dir
-  prompt_git
   prompt_end
 }
 
@@ -273,10 +272,10 @@ prompt_agnoster_setup() {
 
   add-zsh-hook precmd prompt_agnoster_precmd
 
-  zstyle ':vcs_info:*' enable git
+#  zstyle ':vcs_info:*' enable git
   zstyle ':vcs_info:*' check-for-changes false
-  zstyle ':vcs_info:git*' formats '%b'
-  zstyle ':vcs_info:git*' actionformats '%b (%a)'
+#  zstyle ':vcs_info:git*' formats '%b'
+#  zstyle ':vcs_info:git*' actionformats '%b (%a)'
 }
 
 prompt_agnoster_setup "$@"
