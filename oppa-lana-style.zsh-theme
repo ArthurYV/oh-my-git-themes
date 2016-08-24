@@ -142,7 +142,7 @@ ${omg_second_line}"
         echo "${prompt}"
     else
         echo "${prompt}"
-        prompt_agnoster_setup "$@"
+        prompt_agnoster_setup
     fi
 }
 
