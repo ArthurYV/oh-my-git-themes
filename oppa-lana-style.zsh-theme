@@ -138,5 +138,7 @@ ${omg_second_line}"
         prompt="${omg_ungit_prompt}"
     fi
  
-    echo "${prompt}"
+    if [[ $is_a_git_repo == true ]]; then
+        echo "${prompt}"
+    fi
 }
