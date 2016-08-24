@@ -23,8 +23,9 @@
 autoload -U colors && colors
 
 # PROMPT='$(build_prompt)'
+RPROMPT='%{$reset_color%}%T %{$fg_bold[white]%} %n@%m%{$reset_color%}'
 
-enrich_append() {
+function enrich_append{
     local flag=$1
     local symbol=$2
     local color=${3:-$omg_default_color_on}
@@ -33,10 +34,8 @@ enrich_append() {
     echo -n "${color}${symbol}  "
 }
 
-build_prompt() {
+function git_prompt{
 
-    RPROMPT='%{$reset_color%}%T %{$fg_bold[white]%} %n@%m%{$reset_color%}'
-    
     local enabled=${1}
     local current_commit_hash=${2}
     local is_a_git_repo=${3}
@@ -222,9 +221,9 @@ prompt_context() {
 }
 
 # Git: branch/detached head, dirty status
-prompt_git() {
-  build_prompt
-}
+# prompt_git() {
+#  build_prompt
+#}
 
 # Dir: current working directory
 prompt_dir() {
@@ -262,7 +261,8 @@ prompt_agnoster_main() {
   prompt_context
   prompt_virtualenv
   prompt_dir
-  prompt_git
+  # prompt_git
+  git_prompt
   prompt_end
 }
 
