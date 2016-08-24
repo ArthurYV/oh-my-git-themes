@@ -161,7 +161,7 @@ GEAR="\u2699"
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
 # rendering default background/foreground.
-prompt_segment() {
+function prompt_segment {
   local bg fg
   [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
   [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
@@ -175,7 +175,7 @@ prompt_segment() {
 }
 
 # End the prompt, closing any open segments
-prompt_end() {
+function prompt_end {
   if [[ -n $CURRENT_BG ]]; then
     print -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
   else
@@ -189,7 +189,7 @@ prompt_end() {
 # Each component will draw itself, and hide itself if no information needs to be shown
 
 # Context: user@hostname (who am I and where am I)
-prompt_context() {
+function prompt_context {
   local user=`whoami`
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
@@ -198,7 +198,7 @@ prompt_context() {
 }
 
 # Dir: current working directory
-prompt_dir() {
+function prompt_dir {
   prompt_segment blue $PRIMARY_FG ' %~ '
 }
 
@@ -206,7 +206,7 @@ prompt_dir() {
 # - was there an error
 # - am I root
 # - are there background jobs?
-prompt_status() {
+function prompt_status {
   local symbols
   symbols=()
   [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$CROSS"
@@ -217,7 +217,7 @@ prompt_status() {
 }
 
 # Display current virtual environment
-prompt_virtualenv() {
+function prompt_virtualenv {
   if [[ -n $VIRTUAL_ENV ]]; then
     color=cyan
     prompt_segment $color $PRIMARY_FG
@@ -226,7 +226,7 @@ prompt_virtualenv() {
 }
 
 ## Main prompt
-prompt_agnoster_main() {
+function prompt_agnoster_main {
   RETVAL=$?
   CURRENT_BG='NONE'
   prompt_status
@@ -237,12 +237,12 @@ prompt_agnoster_main() {
   prompt_end
 }
 
-prompt_agnoster_precmd() {
+function prompt_agnoster_precmd {
   vcs_info
   PROMPT='%{%f%b%k%}$(prompt_agnoster_main) '
 }
 
-prompt_agnoster_setup() {
+function prompt_agnoster_setup {
   autoload -Uz add-zsh-hook
   autoload -Uz vcs_info
 
