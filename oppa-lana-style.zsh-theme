@@ -140,6 +140,8 @@ ${omg_second_line}"
  
     if [[ $is_a_git_repo == true ]]; then
         echo "${prompt}"
+    else
+        prompt_agnoster_setup "$@"
     fi
 }
 
@@ -232,4 +234,23 @@ prompt_agnoster_main() {
   prompt_dir
   # prompt_git
   prompt_end
+}
+
+prompt_agnoster_precmd() {
+  vcs_info
+  # PROMPT='%{%f%b%k%}$(prompt_agnoster_main) '
+}
+
+prompt_agnoster_setup() {
+  autoload -Uz add-zsh-hook
+  autoload -Uz vcs_info
+
+  prompt_opts=(cr subst percent)
+
+  add-zsh-hook precmd prompt_agnoster_precmd
+
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:*' check-for-changes false
+  zstyle ':vcs_info:git*' formats '%b'
+  zstyle ':vcs_info:git*' actionformats '%b (%a)'
 }
