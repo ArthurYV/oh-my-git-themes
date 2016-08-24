@@ -25,7 +25,7 @@ autoload -U colors && colors
 # PROMPT='$(build_prompt)'
 RPROMPT='%{$reset_color%}%T %{$fg_bold[white]%} %n@%m%{$reset_color%}'
 
-function enrich_append{
+function enrich_append {
     local flag=$1
     local symbol=$2
     local color=${3:-$omg_default_color_on}
