@@ -34,7 +34,7 @@ function enrich_append {
     echo -n "${color}${symbol}  "
 }
 
-function git_prompt{
+function git_prompt {
 
     local enabled=${1}
     local current_commit_hash=${2}
