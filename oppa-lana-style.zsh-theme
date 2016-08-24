@@ -139,9 +139,11 @@ ${omg_second_line}"
       prompt="${omg_ungit_prompt}"
     fi
     
-    if [[ $is_a_git_repo == true ]]; then
-        echo "${prompt}"
-    fi
+    echo "${prompt}"
+    
+    #if [[ $is_a_git_repo == true ]]; then
+     #   echo "${prompt}"
+    #fi
 }
 
 # vim:ft=zsh ts=2 sw=2 sts=2
