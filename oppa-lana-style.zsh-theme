@@ -135,12 +135,13 @@ function git_prompt {
         prompt+=$(enrich_append ${is_on_a_tag} "${omg_is_on_a_tag_symbol} ${tag_at_current_commit}" "${black_on_red}")
         prompt+="%k%F{red}%k%f
 ${omg_second_line}"
-    echo "${prompt}"
     else
-      #  prompt="${omg_ungit_prompt}"
+      prompt="${omg_ungit_prompt}"
     fi
- 
-    #echo "${prompt}"
+    
+    if [[ $is_a_git_repo == true ]]; then
+        echo "${prompt}"
+    fi
 }
 
 # vim:ft=zsh ts=2 sw=2 sts=2
