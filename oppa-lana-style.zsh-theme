@@ -22,10 +22,10 @@
 
 autoload -U colors && colors
 
-# PROMPT='$(build_prompt)'
+PROMPT='$(build_prompt)'
 RPROMPT='%{$reset_color%}%T %{$fg_bold[white]%} %n@%m%{$reset_color%}'
 
-enrich_append() {
+function enrich_append {
     local flag=$1
     local symbol=$2
     local color=${3:-$omg_default_color_on}
@@ -34,7 +34,7 @@ enrich_append() {
     echo -n "${color}${symbol}  "
 }
 
-git_prompt() {
+function custom_build_prompt {
 
     local enabled=${1}
     local current_commit_hash=${2}
@@ -140,7 +140,7 @@ ${omg_second_line}"
     fi
     
     if [[ $is_a_git_repo == true ]]; then
-     print "${prompt}"
+     echo "${prompt}"
     fi
 }
 
@@ -264,7 +264,6 @@ prompt_agnoster_main() {
   prompt_virtualenv
   prompt_dir
   # prompt_git
-  git_prompt
   prompt_end
 }
 
