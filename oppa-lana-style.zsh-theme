@@ -135,11 +135,12 @@ function git_prompt {
         prompt+=$(enrich_append ${is_on_a_tag} "${omg_is_on_a_tag_symbol} ${tag_at_current_commit}" "${black_on_red}")
         prompt+="%k%F{red}%k%f
 ${omg_second_line}"
+    echo "${prompt}"
     else
-        prompt="${omg_ungit_prompt}"
+      #  prompt="${omg_ungit_prompt}"
     fi
  
-    echo "${prompt}"
+    #echo "${prompt}"
 }
 
 # vim:ft=zsh ts=2 sw=2 sts=2
@@ -262,7 +263,7 @@ prompt_agnoster_main() {
   prompt_virtualenv
   prompt_dir
   # prompt_git
-  # git_prompt
+  git_prompt
   prompt_end
 }
 
