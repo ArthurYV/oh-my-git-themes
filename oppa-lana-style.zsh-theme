@@ -141,6 +141,7 @@ ${omg_second_line}"
     if [[ $is_a_git_repo == true ]]; then
         echo "${prompt}"
     else
+        echo "${prompt}"
         prompt_agnoster_setup "$@"
     fi
 }
