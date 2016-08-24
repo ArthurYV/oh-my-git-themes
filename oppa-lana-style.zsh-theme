@@ -23,7 +23,7 @@
 autoload -U colors && colors
 
 # PROMPT='$(build_prompt)'
-RPROMPT='%{$reset_color%}%T %{$fg_bold[white]%} %n@%m%{$reset_color%}'
+# RPROMPT='%{$reset_color%}%T %{$fg_bold[white]%} %n@%m%{$reset_color%}'
 
 function enrich_append {
     local flag=$1
@@ -262,7 +262,7 @@ prompt_agnoster_main() {
   prompt_virtualenv
   prompt_dir
   # prompt_git
-  git_prompt
+  # git_prompt
   prompt_end
 }
 
