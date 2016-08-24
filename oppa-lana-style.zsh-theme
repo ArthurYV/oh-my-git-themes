@@ -25,7 +25,7 @@ autoload -U colors && colors
 # PROMPT='$(build_prompt)'
 RPROMPT='%{$reset_color%}%T %{$fg_bold[white]%} %n@%m%{$reset_color%}'
 
-function enrich_append {
+enrich_append() {
     local flag=$1
     local symbol=$2
     local color=${3:-$omg_default_color_on}
@@ -34,7 +34,7 @@ function enrich_append {
     echo -n "${color}${symbol}  "
 }
 
-function git_prompt {
+git_prompt() {
 
     local enabled=${1}
     local current_commit_hash=${2}
@@ -139,11 +139,9 @@ ${omg_second_line}"
       prompt="${omg_ungit_prompt}"
     fi
     
-    echo "${prompt}"
-    
-    #if [[ $is_a_git_repo == true ]]; then
-     #   echo "${prompt}"
-    #fi
+    if [[ $is_a_git_repo == true ]]; then
+     print "${prompt}"
+    fi
 }
 
 # vim:ft=zsh ts=2 sw=2 sts=2
